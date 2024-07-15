@@ -1,0 +1,28 @@
+<?php
+// module/Toy/view/toy/toy/add.phtml:
+
+$title = 'Add new toy';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$toy = $form->get('name');
+$toy->setAttribute('class', 'form-control');
+$toy->setAttribute('placeholder', 'Toy name');
+$date_add = $form->get('date_add');
+$date_add->setAttribute('class', 'form-control');
+$date_add->setAttribute('placeholder', 'date_add');
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('toy', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('name'));
+echo $this->formRow($form->get('date_add'));
+echo $this->formRow($form->get('id_brand'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+

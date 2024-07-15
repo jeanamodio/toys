@@ -1,0 +1,33 @@
+<?php
+// module/Brand/view/brand/brand/edit.phtml:
+
+$title = 'Edit brand';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$brand = $form->get('name');
+$brand->setAttribute('class', 'form-control');
+$brand->setAttribute('placeholder', 'Brand name');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('brand', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($brand) ?>
+    <?= $this->formElement($brand) ?>
+    <?= $this->formElementErrors()->render($brand, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

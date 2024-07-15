@@ -1,0 +1,23 @@
+<?php
+// module/Brand/view/brand/brand/add.phtml:
+
+$title = 'Add new brand';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$brand = $form->get('name');
+$brand->setAttribute('class', 'form-control');
+$brand->setAttribute('placeholder', 'Brand name');
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('brand', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('name'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+

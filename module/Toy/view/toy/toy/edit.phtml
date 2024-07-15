@@ -1,0 +1,43 @@
+<?php
+// module/Toy/view/toy/toy/edit.phtml:
+
+$title = 'Edit Toy';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$toy = $form->get('name');
+$toy->setAttribute('class', 'form-control');
+$toy->setAttribute('placeholder', 'Toy name');
+
+$date_add = $form->get('date_add');
+$date_add->setAttribute('class', 'form-control');
+$date_add->setAttribute('placeholder', 'date_add');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('toy', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($toy) ?>
+    <?= $this->formElement($toy) ?>
+    <?= $this->formElementErrors()->render($toy, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($date_add) ?>
+    <?= $this->formElement($date_add) ?>
+    <?= $this->formElementErrors()->render($date_add, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

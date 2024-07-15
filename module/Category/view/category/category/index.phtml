@@ -1,0 +1,26 @@
+<?php
+// module/Category/view/category/category/index.phtml:
+
+$title = 'Categories';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('category', ['action' => 'add']) ?>">Add new category</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($categories as $category) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($category->name) ?></td>
+        <td>
+            <a href="<?= $this->url('category', ['action' => 'edit', 'id' => $category->id]) ?>">Edit</a>
+            <a href="<?= $this->url('category', ['action' => 'delete', 'id' => $category->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
