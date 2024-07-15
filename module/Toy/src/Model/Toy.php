@@ -10,6 +10,9 @@ use Laminas\InputFilter\InputFilterAwareInterface;
 use Laminas\InputFilter\InputFilterInterface;
 use Laminas\Validator\StringLength;
 
+use Brand\Model\Brand;
+use Brand\Model\BrandTable;
+
 class Toy implements InputFilterAwareInterface
 {
     public $id;
@@ -102,4 +105,5 @@ class Toy implements InputFilterAwareInterface
         $this->inputFilter = $inputFilter;
         return $this->inputFilter;
     }
+
 }

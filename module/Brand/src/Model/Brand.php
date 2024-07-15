@@ -77,4 +77,6 @@ class Brand implements InputFilterAwareInterface
         $this->inputFilter = $inputFilter;
         return $this->inputFilter;
     }
+
+
 }

@@ -17,6 +17,11 @@ $date_add->setAttribute('placeholder', 'date_add');
 $submit = $form->get('submit');
 $submit->setAttribute('class', 'btn btn-primary');
 
+
+$brand = $form->get('id_brand');
+$brand->setAttribute('class', 'form-control');
+
+
 $form->setAttribute('action', $this->url('toy', [
     'action' => 'edit',
     'id'     => $id,
@@ -35,6 +40,12 @@ echo $this->form()->openTag($form);
     <?= $this->formLabel($date_add) ?>
     <?= $this->formElement($date_add) ?>
     <?= $this->formElementErrors()->render($date_add, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($brand) ?>
+    <?= $this->formElement($brand) ?>
+    <?= $this->formElementErrors()->render($brand, ['class' => 'help-block']) ?>
 </div>
 
 <?php

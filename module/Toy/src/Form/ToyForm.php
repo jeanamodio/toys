@@ -64,7 +64,7 @@ class ToyForm extends Form
         foreach ($this->brands as $brand) {
             $brands[$brand->id] = $brand->name;
         }
-        print_r($brands);
+        //print_r($brands);
         return $brands;
     }
 }

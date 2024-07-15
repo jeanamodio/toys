@@ -9,9 +9,16 @@ $this->headTitle($title);
 $toy = $form->get('name');
 $toy->setAttribute('class', 'form-control');
 $toy->setAttribute('placeholder', 'Toy name');
+
 $date_add = $form->get('date_add');
 $date_add->setAttribute('class', 'form-control');
 $date_add->setAttribute('placeholder', 'date_add');
+//$date_add->setAttribute('type', 'datetime-local');
+
+$id_brand = $form->get('id_brand');
+$id_brand->setAttribute('class', 'form-control');
+
+
 $submit = $form->get('submit');
 $submit->setAttribute('class', 'btn btn-primary');
 

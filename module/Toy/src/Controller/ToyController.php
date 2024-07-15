@@ -8,6 +8,7 @@ use Laminas\View\Model\ViewModel;
 use Toy\Form\ToyForm;
 use Toy\Model\Toy;
 
+use Brand\Model\Brand;
 use Brand\Model\BrandTable;
 
 class ToyController extends AbstractActionController
@@ -26,6 +27,7 @@ class ToyController extends AbstractActionController
         return new ViewModel([
             'toys' => $this->table->fetchAll(),
         ]);
+
     }
 
     public function addAction()
@@ -63,6 +65,8 @@ class ToyController extends AbstractActionController
             return $this->redirect()->toRoute('toy', ['action' => 'add']);
         }
 
+        $brands = $this->brandTable->fetchAll();
+
 
         try {
             $toy = $this->table->getToy($id);
@@ -70,7 +74,7 @@ class ToyController extends AbstractActionController
             return $this->redirect()->toRoute('toy', ['action' => 'index']);
         }
 
-        $form = new ToyForm();
+        $form = new ToyForm(null, $brands);
         $form->bind($toy);
         $form->get('submit')->setAttribute('value', 'Edit');
 

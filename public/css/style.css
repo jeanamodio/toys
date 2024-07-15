@@ -15,3 +15,7 @@
 .navbar li.active a {
     color: var(--bs-navbar-active-color);
 }
+
+body, table{color:var(--brand-color)}
+h1{font-family: 'Permanent Marker'; color:#2DB4FD}
+a{color:#2DB4FD; text-decoration: none;}

@@ -18,9 +18,9 @@ $this->headTitle($title);
 </tr>
 <?php foreach ($toys as $toy) : ?>
     <tr>
-        <td><?= $this->escapeHtml($toy->name) ?></td>
-        <td><?= $this->escapeHtml($toy->id_brand) ?></td>
-        <td><?= $this->escapeHtml($toy->date_add) ?></td>
+        <td><?php echo $this->escapeHtml($toy->name) ?></td>
+        <td><?php echo $this->escapeHtml($toy->id_brand) ?></td>
+        <td><?= date('d-m-Y',strtotime($toy->date_add)) ?></td>
         <td>
             <a href="<?= $this->url('toy', ['action' => 'edit', 'id' => $toy->id]) ?>">Edit</a>
             <a href="<?= $this->url('toy', ['action' => 'delete', 'id' => $toy->id]) ?>">Delete</a>

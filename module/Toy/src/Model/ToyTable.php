@@ -4,6 +4,10 @@ namespace Toy\Model;
 use RuntimeException;
 use Laminas\Db\TableGateway\TableGatewayInterface;
 
+use Laminas\Db\TableGateway\TableGateway;
+use Laminas\Db\Sql\Select;
+
+
 class ToyTable
 {
     private $tableGateway;
@@ -63,4 +67,17 @@ class ToyTable
     {
         $this->tableGateway->delete(['id' => (int) $id]);
     }
+
+    public function countToysByBrand($id_brand)
+    {
+        $select = new Select('toys');
+        $select->columns(['total_toys' => new Expression('COUNT(*)')]);
+        $select->where(['id_brand' => $id_brand]);
+
+        $resultSet = $this->tableGateway->selectWith($select);
+        $row = $resultSet->current();
+        
+        return $row ? $row->total_toys : 0;
+    }
+
 }
